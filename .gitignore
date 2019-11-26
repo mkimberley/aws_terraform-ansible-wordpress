@@ -1,2 +1,5 @@
 .vagrant/
 *.pem
+.terraform/
+*.tfstate
+*.tfstate.backup
