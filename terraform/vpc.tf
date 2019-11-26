@@ -6,8 +6,13 @@ resource "aws_vpc" "main_vpc" {
   }
 }
 
-resource "aws_eip" "nat" {
-  instance = aws_instance.nat.id
+resource "aws_eip" "jumpbox" {
+  instance = aws_instance.jumpbox.id
+  vpc      = true
+}
+
+resource "aws_eip" "awx" {
+  instance = aws_instance.awx.id
   vpc      = true
 }
 
@@ -39,7 +44,7 @@ resource "aws_route_table" "eu-west-2a-private" {
 
   route {
     cidr_block  = "0.0.0.0/0"
-    instance_id = aws_instance.nat.id
+    instance_id = aws_instance.jumpbox.id
   }
 
   tags = {

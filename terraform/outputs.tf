@@ -1,5 +1,8 @@
-output "ip_nat" {
-  value = aws_eip.nat.public_ip
+output "ip_jumpbox" {
+  value = aws_eip.jumpbox.public_ip
+}
+output "ip_awx" {
+  value = aws_eip.awx.public_ip
 }
 
 output "ip_public_web" {
