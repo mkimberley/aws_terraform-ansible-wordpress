@@ -1,21 +1,22 @@
-resource "aws_subnet" "sa-east-1a-public" {
-    vpc_id = "${aws_vpc.main_vpc.id}"
+resource "aws_subnet" "eu-west-2a-public" {
+  vpc_id = aws_vpc.main_vpc.id
 
-    cidr_block = "${var.public_subnet_cidr}"
-    availability_zone = "sa-east-1a"
+  cidr_block        = var.public_subnet_cidr
+  availability_zone = "eu-west-2a"
 
-    tags {
-        Name = "Public Subnet"
-    }
+  tags = {
+    Name = "Public Subnet"
+  }
 }
 
-resource "aws_subnet" "sa-east-1a-private" {
-    vpc_id = "${aws_vpc.main_vpc.id}"
+resource "aws_subnet" "eu-west-2a-private" {
+  vpc_id = aws_vpc.main_vpc.id
 
-    cidr_block = "${var.private_subnet_cidr}"
-    availability_zone = "sa-east-1a"
+  cidr_block        = var.private_subnet_cidr
+  availability_zone = "eu-west-2a"
 
-    tags {
-        Name = "Private Subnet"
-    }
+  tags = {
+    Name = "Private Subnet"
+  }
 }
+

@@ -1,39 +1,43 @@
 variable "aws_access_key" {
-    default = "ACCESS"
+  default = "ACCESS"
 }
+
 variable "aws_secret_key" {
-    default = "SECRET"
+  default = "SECRET"
 }
+
 variable "aws_key_path" {
-    default = "/root/terraform-ansible/terraform"
+  default = "~/.ssh/"
 }
+
 variable "aws_key_name" {
-    default = "ansible"
+  default = "ansible-aws"
 }
 
 variable "aws_region" {
-    description = "EC2 Region for the VPC"
-    default = "sa-east-1"
+  description = "EC2 Region for the VPC"
+  default     = "sa-east-1"
 }
 
 variable "amis" {
-    description = "AMIs by region"
-    default = {
-        sa-east-1 = "ami-0669a96e355eac82f"
-    }
+  description = "AMIs by region"
+  default = {
+    sa-east-1 = "ami-0eab3a90fc693af19"
+  }
 }
 
 variable "vpc_cidr" {
-    description = "CIDR for the whole VPC"
-    default = "10.0.0.0/16"
+  description = "CIDR for the whole VPC"
+  default     = "10.0.0.0/16"
 }
 
 variable "public_subnet_cidr" {
-    description = "CIDR for the Public Subnet"
-    default = "10.0.0.0/24"
+  description = "CIDR for the Public Subnet"
+  default     = "10.0.0.0/24"
 }
 
 variable "private_subnet_cidr" {
-    description = "CIDR for the Private Subnet"
-    default = "10.0.1.0/24"
+  description = "CIDR for the Private Subnet"
+  default     = "10.0.1.0/24"
 }
+
