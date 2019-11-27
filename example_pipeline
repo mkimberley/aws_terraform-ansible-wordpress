@@ -1,0 +1,11 @@
+#!/bin/bash
+cd terraform
+echo "Running terrform plan"
+terraform plan -auto-approve
+terraform apply -auto-approve
+echo "Pausing to allow servers to boot up"
+wait 60s
+echo "Running ansible install of tmux as an exmaple"
+cd ../ansible/
+#ansible -i ec2.py tag_Name_AWX -m yum -a "name=tmux state=present" -u centos --become
+ansible-playbook -i inventory/ec2.py site.yml -u centos --become

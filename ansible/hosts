@@ -1,5 +1,4 @@
 [webserver]
-<webserver-private-ip>
-
+tag_Name_Web_Server_1
 [database]
-<database-private-ip>
+tag_Name_DB_Server_1
