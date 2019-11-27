@@ -1,22 +1,15 @@
 ---
-- name: Install WordPress, Nginx, and PHP-FPM
-  hosts: tag_Name_Web_Server_1 
+- name: Install WordPress, MariaDB, Nginx, and PHP-FPM
+  hosts: tag_Name_Web_Server_1
   remote_user: centos
-  # remote_user: user
   become: yes
-  become_method: sudo
+  connection: tag_Name_JumpBox
+  # remote_user: user
+  # sudo: yes
+
   roles:
     - common
+    - mariadb
     - nginx
     - php-fpm
     - wordpress
-
-- name: Install MySQL
-  hosts: tag_Name_DB_Server_1
-  remote_user: centos
-  # remote_user: user
-  become: yes
-  become_method: sudo
-  roles:
-    - common
-    - mysql
