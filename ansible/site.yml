@@ -3,9 +3,6 @@
   hosts: tag_Name_Web_Server_1
   remote_user: centos
   become: yes
-  connection: tag_Name_JumpBox
-  # remote_user: user
-  # sudo: yes
 
   roles:
     - common

@@ -139,6 +139,12 @@ resource "aws_security_group" "web" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
     cidr_blocks = [var.vpc_cidr]
   }
   ingress {
@@ -147,15 +153,18 @@ resource "aws_security_group" "web" {
     protocol    = "icmp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
   egress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {  
     from_port = 3306 # MySQL
-
     to_port     = 3306
     protocol    = "tcp"
     cidr_blocks = [var.private_subnet_cidr]
   }
-
   vpc_id = aws_vpc.main_vpc.id
 
   tags = {
@@ -173,6 +182,12 @@ resource "aws_security_group" "db" {
     to_port         = 3306
     protocol        = "tcp"
     security_groups = [aws_security_group.web.id]
+  }
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
