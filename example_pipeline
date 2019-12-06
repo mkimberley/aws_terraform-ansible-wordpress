@@ -7,5 +7,5 @@ echo "Pausing to allow servers to boot up"
 sleep 60
 echo "Running ansible"
 cd ../ansible/
-#ansible -i ec2.py tag_Name_AWX -m yum -a "name=tmux state=present" -u centos --become
+#ansible -i inventory/ec2.py tag_Name_AWX -m yum -a "name=tmux state=present" -u centos --become
 ansible-playbook -i inventory/ec2.py site.yml -u centos --become
