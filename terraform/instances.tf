@@ -19,8 +19,7 @@ resource "aws_instance" "awx" {
   instance_type               = "t2.small"
   key_name                    = var.aws_key_name
   vpc_security_group_ids      = [aws_security_group.awx.id]
-  subnet_id                   = aws_subnet.eu-west-2a-public.id
-  associate_public_ip_address = true
+  subnet_id                   = aws_subnet.eu-west-2a-private.id
   source_dest_check           = false
 
   tags = {

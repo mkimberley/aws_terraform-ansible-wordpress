@@ -1,7 +1,7 @@
 ---
 - name: Install WordPress, MariaDB, Nginx, and PHP-FPM
   hosts: tag_Name_Web_Server_1
-  remote_user: centos
+  remote_user: ubuntu
   become: yes
 
   roles:
