@@ -2,9 +2,24 @@
 - name: Install nginx
   apt: name=nginx state=present
 
+- name: remove defaults
+  file:
+    path:
+      - "/etc/nginx/sites-available/default"
+      - "/etc/nginx/sites-enabled/default"
+    state: absent
+
+
 - name: Copy nginx configuration for wordpress
-  template: src=default.conf dest=/etc/nginx/sites-enabled/default.conf
+  template: src=default dest=/etc/nginx/sites-available/default
   notify: restart nginx
+
+- name: Symlink default catchall
+  file:
+    src: "/etc/nginx/sites-available/default"
+    dest: "/etc/nginx/sites-enabled/default"
+    state: link
+
 
 - name: insert ufw rule for nginx
   ufw:

@@ -18,7 +18,9 @@
     - php-curl
 
 - name: Disable default pool
-  command: mv /etc/php/7.2/fpm/pool.d/www.conf /etc/php/7.2/fpm/pool.d/www.disabled creates=/etc/php/7.2/fpm/pool.d/www.disabled
+  file:
+    path: /etc/php/7.2/fpm/pool.d/www.conf
+    state: absent
   notify: restart php-fpm
 
 - name: Copy php-fpm configuration
